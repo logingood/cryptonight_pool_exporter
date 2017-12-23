@@ -16,14 +16,14 @@ import (
 )
 
 type PoolStats struct {
-	TotalPayments	 int `json:totalPayments`
-	Hashrate			 float64 `json:hashrate`
-	RoundHashes		 int `json:roundHashes`
+	TotalPayments	 float64 `json:totalPayments`
+	Hashrate       float64 `json:hashrate`
+	RoundHashes    float64 `json:roundHashes`
 	LastBlockFound string `json:lastBlockFound`
 }
 
 type NetworkStats struct {
-	Difficulty		int `json:difficulty`
+	Difficulty		float64 `json:difficulty`
 }
 
 
@@ -171,8 +171,6 @@ func (c *CpoolStatsCollector) Collect(ch chan<- prometheus.Metric) {
 	for _, addr := range conf.Dial_Addr {
 
 		stats := callCpool(addr, conf)
-
-		fmt.Printf("%+v", stats)
 
 		totalPayments  := float64(stats.Pool.TotalPayments)
 
