@@ -1,2 +1,3 @@
-claymore_exporter
+cpool_exporter
 *.swp
+.envrc

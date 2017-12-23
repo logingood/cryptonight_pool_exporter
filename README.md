@@ -1,39 +1,32 @@
 # Description
 
-[Prometheus]() exporter for [Claymore Dual Miner](https://github.com/nanopool/Claymore-Dual-Miner`), which collects statistics 
-from json rpc provided by Claymore Miner. 
+[Prometheus]() exporter for [Electroneum Pool](https://github.com/electroneum/electroneum-pool), 
+probably could be used with all cryptonight pool types due to similar API.
 
 Stats being collected:
 
 * Total Hashrate - mh/s
-* Claymore Uptime in minutes
-* Per GPU Hashrate kh/s
-* [Ethereum](https://www.ethereum.org/) shares found
-* Rejected shares
+* Network difficulty
+
 
 # Installation
 
 ```
-go get github.com/murat1985/claymore_exporter
+go get github.com/murat1985/cpool_exporter
 ```
 
 or using Docker container:
 
 ```
-git clone http://github.com/murat1985/claymore_exporeter.git
+git clone http://github.com/murat1985/cryptonight_exporeter.git
 ```
 
 Build local image:
 ```
-docker build . -t claymore_exporeter:local
+docker build . -t cpool_exporeter:local
 ```
 
 Run it:
 ```
-docker run -d -t -i -e CLAYMORE_DIAL_ADDR='192.168.1.1;192.168.1.2;192.168.1.3' -p 10333:10333 --name claymore_exporter claymore_exporter:local
+docker run -d -t -i -e CPOOL_DIAL_ADDR='192.168.1.1;192.168.1.2;192.168.1.3' -e CPOOL_PORT=8117 -p 10333:10333 --name cpool_exporter cpool_exporter:local
 ```
-
-# TODO
-
-- WIP major cleanup
-- Tests
